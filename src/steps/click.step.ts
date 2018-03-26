@@ -2,7 +2,8 @@ const { Given, When, Then } = require("cucumber");
 
 import {
     ActionUtil,
-    ElementUtil
+    ElementUtil,
+    AssertionUtil
 } from '../utils'
 
 When(/^I click on element having (id|name|class|xpath|css) "([^"]*)"$/, async (type, element) => {
@@ -26,5 +27,15 @@ When(/^I double click on element having (id|name|class|xpath|css) "([^"]*)"$/, a
     var webElement = ElementUtil.findElement(type, element);
 
     await ActionUtil.doubleClick(webElement);
+
+});
+
+When(/^I click on element having (id|name|class|xpath|css) "([^"]*)" and text "([^"]*)" $/, async (type, element, text) => {
+
+    var webElement = ElementUtil.findElement(type, element);
+
+    await AssertionUtil.equal(webElement.getText(), text);
+
+    await ActionUtil.click(webElement);
 
 });

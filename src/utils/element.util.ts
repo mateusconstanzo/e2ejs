@@ -4,6 +4,7 @@ import {
     element,
     WebElementPromise,
     ElementFinder,
+    ElementArrayFinder
 } from "protractor";
 
 
@@ -22,9 +23,23 @@ export class ElementUtil {
             case "linkText":
                 return this.findByLinkText(selector);
 
+            case "partialLinkText":
+                return this.findByPartialLinkText(selector);
+
             case "class":
                 return this.findByClassName(selector);
 
+        }
+
+    };
+
+    // todo validar
+    static getElementsFinder(type: string, selector: string): ElementArrayFinder {
+
+        switch (type) {
+
+            case "id":
+                return element.all(by.id(selector));
         }
 
     };
@@ -41,6 +56,9 @@ export class ElementUtil {
 
             case "linkText":
                 return element(by.linkText(selector));
+
+            case "partialLinkText":
+            return element(by.partialLinkText(selector));
 
             case "class":
                 return element(by.className(selector));
@@ -63,6 +81,12 @@ export class ElementUtil {
     static findByLinkText(selector: string): WebElementPromise {
         return browser.findElement(
             by.linkText(selector)
+        );
+    }
+
+    static findByPartialLinkText(selector: string): WebElementPromise {
+        return browser.findElement(
+            by.partialLinkText(selector)
         );
     }
 

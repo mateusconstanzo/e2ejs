@@ -33,4 +33,16 @@ export class AssertionUtil {
         await browser.wait(EC.presenceOf(element), number);
     };
 
+    static async isTrue(value: any) {
+        await expect(value).to.be.true
+    };
+
+    static async isFalse(value: any) {
+        await expect(value).to.not.true
+    };
+
+    static async equalLength(value: any, size: number) {
+        await expect(value).to.have.length(size);
+    };
+
 }
