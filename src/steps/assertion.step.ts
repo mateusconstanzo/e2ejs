@@ -42,3 +42,11 @@ Then(/^element having (id|name|class|xpath|css) "([^"]*)" should not have partia
     await AssertionUtil.notContains(webElement.getText(), text);
     
 });
+
+Then(/^element having (id|name|class|xpath|css) "([^"]*)" should be present$/, async (type, element) => {
+
+    let elementFinder = ElementUtil.getElementFinder(type, element);
+
+    await AssertionUtil.presenceOf(elementFinder);
+
+});

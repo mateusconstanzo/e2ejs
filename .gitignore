@@ -21,3 +21,5 @@ temp/
 .DS_Store
 Thumbs.db
 .nyc_output
+reports/*
+package-lock.json

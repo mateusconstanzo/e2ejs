@@ -1,5 +1,8 @@
 import * as path from "path";
+import * as dotenv from 'dotenv';
 import { browser, Config } from "protractor";
+
+dotenv.config();
 
 export const config: Config = {
 
@@ -7,7 +10,7 @@ export const config: Config = {
 
     SELENIUM_PROMISE_MANAGER: false,
 
-    baseUrl: "http://www.google.com",
+    baseUrl:  process.env.BASE_URL,
 
     capabilities: {
         browserName: "chrome",
