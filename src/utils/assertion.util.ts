@@ -34,15 +34,14 @@ export class AssertionUtil {
     };
 
     static async isTrue(value: any) {
-        await expect(value).to.be.true
+        await expect(await value).to.be.true
     };
 
     static async isFalse(value: any) {
-        await expect(value).to.not.true
+        await expect(await value).to.not.true
     };
 
     static async equalLength(value: any, size: number) {
-        await expect(value).to.have.length(size);
+        await expect(value).to.equal(size);
     };
-
 }

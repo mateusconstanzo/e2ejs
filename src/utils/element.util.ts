@@ -4,96 +4,56 @@ import {
     element,
     WebElementPromise,
     ElementFinder,
-    ElementArrayFinder
+    ElementArrayFinder,
 } from "protractor";
-
 
 export class ElementUtil {
 
     static findElement(type: string, selector: string): WebElementPromise {
 
-        switch (type) {
+        let by = this.getBy(type, selector);
 
-            case "id":
-                return this.findByid(selector);
-
-            case "name":
-                return this.findByName(selector);
-
-            case "linkText":
-                return this.findByLinkText(selector);
-
-            case "partialLinkText":
-                return this.findByPartialLinkText(selector);
-
-            case "class":
-                return this.findByClassName(selector);
-
-        }
+        return browser.findElement(by);
 
     };
 
-    // todo validar
     static getElementsFinder(type: string, selector: string): ElementArrayFinder {
 
-        switch (type) {
+        let by = this.getBy(type, selector);
 
-            case "id":
-                return element.all(by.id(selector));
-        }
+        return element.all(by);
 
     };
 
     static getElementFinder(type: string, selector: string): ElementFinder {
 
+        let by = this.getBy(type, selector);
+
+        return element(by);
+
+    };
+
+    static getBy(type: string, selector: string) {
+
         switch (type) {
 
             case "id":
-                return element(by.id(selector));
+                return by.id(selector);
 
             case "name":
-                return element(by.name(selector));
+                return by.name(selector);
 
             case "linkText":
-                return element(by.linkText(selector));
+                return by.linkText(selector);
 
             case "partialLinkText":
-            return element(by.partialLinkText(selector));
+                return by.partialLinkText(selector);
 
             case "class":
-                return element(by.className(selector));
+                return by.className(selector);
 
         }
 
-    };
-    static findByid(selector: string): WebElementPromise {
-        return browser.findElement(
-            by.id(selector)
-        );
-    }
-
-    static findByName(selector: string): WebElementPromise {
-        return browser.findElement(
-            by.name(selector)
-        );
-    }
-
-    static findByLinkText(selector: string): WebElementPromise {
-        return browser.findElement(
-            by.linkText(selector)
-        );
-    }
-
-    static findByPartialLinkText(selector: string): WebElementPromise {
-        return browser.findElement(
-            by.partialLinkText(selector)
-        );
-    }
-
-    static findByClassName(selector: string): WebElementPromise {
-        return browser.findElement(
-            by.className(selector)
-        );
     }
 
 }
