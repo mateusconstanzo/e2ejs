@@ -25,8 +25,12 @@
     "@types/chai": "^4.1.2",
     "@types/chai-as-promised": "^7.1.0",
     "@types/dotenv": "^4.0.2",
+    "@types/fs-extra": "^5.0.1",
     "@types/node": "^8.9.5",
     "@types/selenium-webdriver": "^3.0.8",
+    "@types/yargs": "^11.0.0"
+  },
+  "dependencies": {
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
     "cucumber": "^3.2.1",
@@ -36,6 +40,8 @@
     "protractor-cucumber-framework": "^4.2.0",
     "protractor-multiple-cucumber-html-reporter-plugin": "^1.6.1",
     "ts-node": "^3.3.0",
-    "typescript": "^2.7.2"
+    "typescript": "^2.7.2",    
+    "fs-extra": "^5.0.0",
+    "yargs": "^11.0.0"
   }
 }

@@ -1,7 +1,10 @@
 import * as path from "path";
 import * as dotenv from 'dotenv';
 import { browser, Config } from "protractor";
+import { argv } from 'yargs'
+import { removeSync } from 'fs-extra'
 
+console.log(process)
 dotenv.config();
 
 export const config: Config = {
@@ -16,9 +19,7 @@ export const config: Config = {
         browserName: "chrome",
     },
 
-    specs: [
-        "../features/*.feature",
-    ],
+    specs: getFeatureFiles(),
 
     /**
      * CucumberJS specific
@@ -32,7 +33,7 @@ export const config: Config = {
             "../support/*"
         ],
         format: "json:./reports/cucumber_report.json",
-        tags: "@TypeScriptScenario or @CucumberScenario or @ProtractorScenario",
+        tags: argv.tag || ""
     },    
 
 
@@ -58,9 +59,9 @@ export const config: Config = {
 
     beforeLaunch: () => {
         console.log(`\n==========================================================================`);
-        console.log(`\nThe directory './tmp', which holds reports / screenshots is being removed.\n`);
+        console.log(`\nThe directory './reports', which holds reports / screenshots is being removed.\n`);
         console.log(`==========================================================================\n`);
-        //fs.removeSync('./.tmp');
+        removeSync('./reports');
     },
     
 
@@ -68,3 +69,13 @@ export const config: Config = {
         
     },
 };
+
+function getFeatureFiles() {
+
+    if (argv.feature) {
+        let pathFeature = argv.pathFeature || `${process.cwd()}/features/`
+        return argv.feature.split(',').map(feature => `${pathFeature}/**/${feature}.feature`);
+    }
+
+    return [`${process.cwd()}/features/*.feature`];
+}

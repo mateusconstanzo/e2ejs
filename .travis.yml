@@ -1,0 +1,13 @@
+language: node_js
+
+node_js:
+  - "9"
+
+install:
+  - npm install
+
+script:
+  - npm run build
+
+notifications:
+  email: false
