@@ -6,6 +6,18 @@ export class ActionUtil {
         await browser.get(url);
     };
 
+    static async back() {
+        await browser.navigate().back();
+    };
+
+    static async forward() {
+        await browser.navigate().forward();
+    };
+
+    static async refresh() {
+        await browser.navigate().refresh();
+    };
+
     static async click(webElement: WebElementPromise) {
         await webElement.click();
     };

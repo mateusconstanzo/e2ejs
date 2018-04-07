@@ -7,6 +7,10 @@ import {
     ElementArrayFinder,
 } from "protractor";
 
+import {
+    By
+} from "selenium-webdriver";
+
 export class ElementUtil {
 
     static findElement(type: string, selector: string): WebElementPromise {
@@ -33,7 +37,7 @@ export class ElementUtil {
 
     };
 
-    static getBy(type: string, selector: string) {
+    static getBy(type: string, selector: string): By {
 
         switch (type) {
 

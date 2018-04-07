@@ -255,6 +255,6 @@ Then(/^radio button having (id|name|class|xpath|css) "([^"]*)" should be unselec
 
 Then(/^I expect to see "([^"]*)" on page$/, async (text) => {
 
-    await AssertionUtil.contains(browser.getPageSource(), text);
+    await AssertionUtil.contains(await browser.getPageSource(), text);
 
 });

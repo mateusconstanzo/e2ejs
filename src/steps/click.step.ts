@@ -30,7 +30,7 @@ When(/^I double click on element having (id|name|class|xpath|css) "([^"]*)"$/, a
 
 });
 
-When(/^I click on element having (id|name|class|xpath|css) "([^"]*)" and text "([^"]*)" $/, async (type, element, text) => {
+When(/^I click on element having (id|name|class|xpath|css) "([^"]*)" and text "([^"]*)"$/, async (type, element, text) => {
 
     var webElement = ElementUtil.findElement(type, element);
 

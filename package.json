@@ -11,7 +11,8 @@
     "cucumber",
     "typescript"
   ],
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc -p ./src/",
     "build:watch": "tsc -p ./src/ -w",
@@ -40,7 +41,7 @@
     "protractor-cucumber-framework": "^4.2.0",
     "protractor-multiple-cucumber-html-reporter-plugin": "^1.6.1",
     "ts-node": "^3.3.0",
-    "typescript": "^2.7.2",    
+    "typescript": "^2.7.2",
     "fs-extra": "^5.0.0",
     "yargs": "^11.0.0"
   }

@@ -4,8 +4,9 @@ import { browser, Config } from "protractor";
 import { argv } from 'yargs'
 import { removeSync } from 'fs-extra'
 
-console.log(process)
 dotenv.config();
+
+const production = true;
 
 export const config: Config = {
 
@@ -13,7 +14,7 @@ export const config: Config = {
 
     SELENIUM_PROMISE_MANAGER: false,
 
-    baseUrl:  process.env.BASE_URL,
+    baseUrl: process.env.BASE_URL,
 
     capabilities: {
         browserName: "chrome",
@@ -28,13 +29,10 @@ export const config: Config = {
     frameworkPath: require.resolve('protractor-cucumber-framework'),
     cucumberOpts: {
         compiler: "ts:ts-node/register",
-        require: [
-            "../steps/*", 
-            "../support/*"
-        ],
+        require: getCucumberOptsRequire(),
         format: "json:./reports/cucumber_report.json",
         tags: argv.tag || ""
-    },    
+    },
 
 
     /**
@@ -48,14 +46,14 @@ export const config: Config = {
             removeExistingJsonReportFile: true,
             removeOriginalJsonReportFile: true
         }
-    }],    
+    }],
 
 
     onPrepare: () => {
         browser.ignoreSynchronization = true;
         browser.manage().window().maximize();
     },
-    
+
 
     beforeLaunch: () => {
         console.log(`\n==========================================================================`);
@@ -63,10 +61,10 @@ export const config: Config = {
         console.log(`==========================================================================\n`);
         removeSync('./reports');
     },
-    
+
 
     onComplete: () => {
-        
+
     },
 };
 
@@ -78,4 +76,21 @@ function getFeatureFiles() {
     }
 
     return [`${process.cwd()}/features/*.feature`];
+}
+
+function getCucumberOptsRequire() {
+
+    if (production) {
+
+        return [
+            `${process.cwd()}/node_modules/e2ejs/dist/steps/*`,
+            `${process.cwd()}/node_modules/e2ejs/dist/support/*`,
+        ];
+
+    }
+
+    return [
+        "../steps/*.js",
+        "../support/*.js"
+    ];
 }
