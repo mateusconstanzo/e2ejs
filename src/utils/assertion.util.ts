@@ -22,11 +22,11 @@ export class AssertionUtil {
     };
 
     static async contains(actual: any, expected: any) {
-        await expect(actual).to.contains(expected);
+        await expect(await actual).to.contains(expected);
     };
 
     static async notContains(actual: any, expected: any) {
-        await expect(actual).to.not.contains(expected);
+        await expect(await actual).to.not.contains(expected);
     };
 
     static async presenceOf(element: ElementFinder, number = 5000) {

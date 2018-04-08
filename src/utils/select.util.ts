@@ -22,7 +22,7 @@ export class SelectUtil {
 
         }
 
-        throw new Error('No options are selected');
+        throw new SelectError('No options are selected');
 
     }
 
@@ -31,9 +31,13 @@ export class SelectUtil {
         let tagName = await webElement.getTagName();
 
         if (null == tagName || "select" !== tagName) {
-            throw new Error('No select');
+            throw new SelectError('No select');
         }
 
     };
+
+}
+
+export class SelectError extends Error {
 
 }

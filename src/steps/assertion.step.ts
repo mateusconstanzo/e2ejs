@@ -6,7 +6,9 @@ import { error } from 'selenium-webdriver'
 import {
     AssertionUtil,
     ElementUtil,
-    SelectUtil
+    SelectUtil,
+    RadioUtil,
+    RadioError
 } from '../utils'
 
 const { Given, When, Then } = require("cucumber");
@@ -238,20 +240,33 @@ Then(/^option "([^"]*)" by value from dropdown having (id|name|class|xpath|css) 
 
 Then(/^radio button having (id|name|class|xpath|css) "([^"]*)" should be selected$/, async (type, element) => {
 
-    let webElement = ElementUtil.findElement(type, element);
+    let webElements = ElementUtil.getElementsFinder(type, element);
 
-    await AssertionUtil.isTrue(webElement.isSelected());
+    let selected = await RadioUtil.getFirstSelected(webElements);
+
+    await AssertionUtil.isTrue(selected.isSelected());
 
 });
 
 Then(/^radio button having (id|name|class|xpath|css) "([^"]*)" should be unselected$/, async (type, element) => {
 
-    let webElement = ElementUtil.findElement(type, element);
+    try {
 
-    await AssertionUtil.isFalse(webElement.isSelected());
+        let webElements = ElementUtil.getElementsFinder(type, element);
+
+        let selected = await RadioUtil.getFirstSelected(webElements);
+
+        await AssertionUtil.isFalse(selected.isSelected());
+
+    } catch (e) {
+
+        if (!(e instanceof RadioError)) {
+            throw e;
+        }
+
+    }
 
 });
-
 
 Then(/^I expect to see "([^"]*)" on page$/, async (text) => {
 

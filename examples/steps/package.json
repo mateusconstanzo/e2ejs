@@ -10,15 +10,17 @@
     "clean-build": "npm run clean && npm run build",
     "test": "protractor dist/config.js",
     "webdriver-update": "webdriver-manager update",
-    "webdriver-start": "webdriver-manager start"
+    "webdriver-start": "webdriver-manager start",
+    "server": "http-server ./pages"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^8.9.5"
+    "@types/node": "^8.9.5",
+    "http-server": "^0.11.1",
+    "typescript": "^2.7.2"
   },
   "dependencies": {
-    "typescript": "^2.7.2",
     "e2ejs": "^1.0.0"
   }
 }

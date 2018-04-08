@@ -8,6 +8,22 @@ dotenv.config();
 
 const production = true;
 
+let e2ejsPath = require.resolve('e2ejs').replace('index.js', '');
+
+export interface Paths {
+
+    steps: string;
+    support: string;
+
+}
+
+export const paths : Paths = {
+
+    steps: `${e2ejsPath}/steps/*`,
+    support: `${e2ejsPath}/support/*`
+
+}
+
 export const config: Config = {
 
     seleniumAddress: "http://127.0.0.1:4444/wd/hub",
@@ -83,8 +99,8 @@ function getCucumberOptsRequire() {
     if (production) {
 
         return [
-            `${process.cwd()}/node_modules/e2ejs/dist/steps/*`,
-            `${process.cwd()}/node_modules/e2ejs/dist/support/*`,
+            paths.steps,
+            paths.support,
         ];
 
     }

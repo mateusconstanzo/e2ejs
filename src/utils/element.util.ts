@@ -56,8 +56,14 @@ export class ElementUtil {
             case "class":
                 return by.className(selector);
 
-        }
+            case "xpath":
+                return by.xpath(selector);
 
+            case "css":
+                return by.css(selector);
+
+        }
+        
     }
 
 }
