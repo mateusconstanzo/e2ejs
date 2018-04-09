@@ -1,5 +1,3 @@
-import { defineSupportCode } from 'cucumber';
+import { setDefaultTimeout } from 'cucumber';
 
-defineSupportCode(({ setDefaultTimeout }) => {
-    setDefaultTimeout(10000);
-});
+setDefaultTimeout(10000);

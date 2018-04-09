@@ -47,7 +47,9 @@ Scenario: Search e2ejs
 
 ### Examples
 
-* [Google](./examples/google/README.md)
+* [Google](./examples/google)
+* [Google - MultiBrowser](./examples/google-multibrowser)
+* [Steps](./examples/steps)
 
 
 ## Configuration options 

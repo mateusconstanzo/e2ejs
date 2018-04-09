@@ -1,5 +1,5 @@
 {
-  "name": "e2ejs-example-steps",
+  "name": "e2ejs-example-google-multibrowser",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,14 +10,12 @@
     "clean-build": "npm run clean && npm run build",
     "test": "protractor dist/config.js",
     "webdriver-update": "webdriver-manager update",
-    "webdriver-start": "webdriver-manager start",
-    "server": "http-server ./pages"
+    "webdriver-start": "webdriver-manager start"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^8.9.5",
-    "http-server": "^0.11.1",
     "typescript": "^2.7.2"
   },
   "dependencies": {

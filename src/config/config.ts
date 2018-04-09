@@ -21,10 +21,10 @@ export interface Paths {
 
 }
 
-export const paths : Paths = {
+export const paths: Paths = {
 
-    steps: `${e2ejsPath}/steps/*`,
-    support: `${e2ejsPath}/support/*`
+    steps: `${e2ejsPath}/steps/*.js`,
+    support: `${e2ejsPath}/support/*.js`
 
 }
 
