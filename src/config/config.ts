@@ -6,7 +6,7 @@ import { removeSync } from 'fs-extra'
 
 dotenv.config();
 
-const production = false;
+const production = true;
 
 let e2ejsPath = "";
 
