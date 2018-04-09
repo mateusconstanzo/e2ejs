@@ -1,4 +1,4 @@
-const { Given, When, Then } = require("cucumber");
+import { When } from 'cucumber'
 
 import {
     ActionUtil,

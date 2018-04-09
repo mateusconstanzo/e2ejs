@@ -6,9 +6,13 @@ import { removeSync } from 'fs-extra'
 
 dotenv.config();
 
-const production = true;
+const production = false;
 
-let e2ejsPath = require.resolve('e2ejs').replace('index.js', '');
+let e2ejsPath = "";
+
+if (production) {
+    e2ejsPath = require.resolve('e2ejs').replace('index.js', '');
+}
 
 export interface Paths {
 

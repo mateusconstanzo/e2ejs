@@ -19,6 +19,6 @@
   },
   "dependencies": {
     "typescript": "^2.7.2",
-    "e2ejs": "^1.0.0"
+    "e2ejs": "^1.0.1"
   }
 }

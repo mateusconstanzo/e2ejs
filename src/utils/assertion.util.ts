@@ -9,7 +9,6 @@ import {
 
 chai.use(chaiAsPromised);
 const expect = chai.expect;
-const EC = protractor.ExpectedConditions;
 
 export class AssertionUtil {
 
@@ -30,6 +29,7 @@ export class AssertionUtil {
     };
 
     static async presenceOf(element: ElementFinder, number = 5000) {
+        let EC = protractor.ExpectedConditions;
         await browser.wait(EC.presenceOf(element), number);
     };
 

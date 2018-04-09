@@ -1,7 +1,8 @@
-import * as chai from 'chai'
-import * as chaiAsPromised from 'chai-as-promised'
+import * as chai from 'chai';
+import * as chaiAsPromised from 'chai-as-promised';
 import { browser } from 'protractor';
-import { error } from 'selenium-webdriver'
+import { error } from 'selenium-webdriver';
+import { Then } from 'cucumber'
 
 import {
     AssertionUtil,
@@ -9,9 +10,7 @@ import {
     SelectUtil,
     RadioUtil,
     RadioError
-} from '../utils'
-
-const { Given, When, Then } = require("cucumber");
+} from '../utils';
 
 chai.use(chaiAsPromised);
 const expect = chai.expect;
