@@ -49,6 +49,7 @@ Scenario: Search e2ejs
 
 * [Google](./examples/google)
 * [Google - MultiBrowser](./examples/google-multibrowser)
+* [Step Custom](./examples/step-custom)
 * [Steps](./examples/steps)
 
 
