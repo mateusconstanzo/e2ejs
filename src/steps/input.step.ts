@@ -10,7 +10,7 @@ import {
 
 When(/^I enter "([^"]*)" into input field having (id|name|class|xpath|css) "([^"]*)"$/, async (text, type, element) => {
 
-    var webElement = ElementUtil.findElement(type, element);
+    const webElement = ElementUtil.findElement(type, element);
 
     await ActionUtil.sendKeys(webElement, text);
 
@@ -18,7 +18,7 @@ When(/^I enter "([^"]*)" into input field having (id|name|class|xpath|css) "([^"
 
 Then(/^I clear input field having (id|name|class|xpath|css) "([^"]*)"$/, async (type, element) => {
 
-    var webElement = ElementUtil.findElement(type, element);
+    const webElement = ElementUtil.findElement(type, element);
 
     await ActionUtil.clear(webElement);
 

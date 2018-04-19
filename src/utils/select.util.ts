@@ -1,20 +1,22 @@
 import {
-    browser,
     by,
-    element,
     WebElementPromise,
     WebElement
 } from "protractor";
 
+export class SelectError extends Error {
+
+}
+
 export class SelectUtil {
 
-    static async getFirstSelectedOption(webElement: WebElementPromise) {
+    static async getFirstSelectedOption(webElement: WebElementPromise): Promise<WebElement> {
 
         await this.valid(webElement);
 
-        let options = await webElement.findElements(by.tagName("option"));
+        const options = await webElement.findElements(by.tagName("option"));
 
-        for (let option of options) {
+        for (const option of options) {
 
             if (await option.isSelected()) {
                 return option;
@@ -28,16 +30,12 @@ export class SelectUtil {
 
     static async valid(webElement: WebElementPromise) {
 
-        let tagName = await webElement.getTagName();
+        const tagName = await webElement.getTagName();
 
-        if (null == tagName || "select" !== tagName) {
+        if (null === tagName || "select" !== tagName) {
             throw new SelectError('No select');
         }
 
     };
-
-}
-
-export class SelectError extends Error {
 
 }

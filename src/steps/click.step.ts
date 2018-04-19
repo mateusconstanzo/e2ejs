@@ -8,7 +8,7 @@ import {
 
 When(/^I click on element having (id|name|class|xpath|css) "([^"]*)"$/, async (type, element) => {
 
-    var webElement = ElementUtil.findElement(type, element);
+    const webElement = ElementUtil.findElement(type, element);
 
     await ActionUtil.click(webElement);
 
@@ -16,7 +16,7 @@ When(/^I click on element having (id|name|class|xpath|css) "([^"]*)"$/, async (t
 
 When(/^I click on link having text "([^"]*)"$/, async (text) => {
 
-    var webElement = ElementUtil.findElement("linkText", text);
+    const webElement = ElementUtil.findElement("linkText", text);
 
     await ActionUtil.click(webElement);
 
@@ -24,7 +24,7 @@ When(/^I click on link having text "([^"]*)"$/, async (text) => {
 
 When(/^I double click on element having (id|name|class|xpath|css) "([^"]*)"$/, async (type, element) => {
 
-    var webElement = ElementUtil.findElement(type, element);
+    const webElement = ElementUtil.findElement(type, element);
 
     await ActionUtil.doubleClick(webElement);
 
@@ -32,7 +32,7 @@ When(/^I double click on element having (id|name|class|xpath|css) "([^"]*)"$/, a
 
 When(/^I click on element having (id|name|class|xpath|css) "([^"]*)" and text "([^"]*)"$/, async (type, element, text) => {
 
-    var webElement = ElementUtil.findElement(type, element);
+    const webElement = ElementUtil.findElement(type, element);
 
     await AssertionUtil.equal(webElement.getText(), text);
 

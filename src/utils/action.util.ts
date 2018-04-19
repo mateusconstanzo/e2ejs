@@ -1,4 +1,8 @@
-import { browser, by, protractor, WebElementPromise } from "protractor";
+import {
+    browser,
+    protractor,
+    WebElementPromise
+} from "protractor";
 
 export class ActionUtil {
 

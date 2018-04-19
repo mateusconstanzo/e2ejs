@@ -15,29 +15,29 @@ export class ElementUtil {
 
     static findElement(type: string, selector: string): WebElementPromise {
 
-        let by = this.getBy(type, selector);
+        const locator = this.getLocator(type, selector);
 
-        return browser.findElement(by);
+        return browser.findElement(locator);
 
     };
 
     static getElementsFinder(type: string, selector: string): ElementArrayFinder {
 
-        let by = this.getBy(type, selector);
+        const locator = this.getLocator(type, selector);
 
-        return element.all(by);
+        return element.all(locator);
 
     };
 
     static getElementFinder(type: string, selector: string): ElementFinder {
 
-        let by = this.getBy(type, selector);
+        const locator = this.getLocator(type, selector);
 
-        return element(by);
+        return element(locator);
 
     };
 
-    static getBy(type: string, selector: string): By {
+    static getLocator(type: string, selector: string): By {
 
         switch (type) {
 
@@ -63,7 +63,7 @@ export class ElementUtil {
                 return by.css(selector);
 
         }
-        
+
     }
 
 }
