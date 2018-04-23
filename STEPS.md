@@ -10,10 +10,12 @@ List of all predefined steps
 * Then I navigate back
 * Then I navigate forward
 * Then I refresh page
+* Then I switch to tab "{tab}"
 
 ## Click Steps
 
 * When I click on element having (id|name|class|xpath|css) "{element}"
+* When I click on all elements having (id|name|class|xpath|css) "{element}"
 * When I click on link having text "{text}"
 * When I double click on element having (id|name|class|xpath|css) "{element}"
 * When I click on element having (id|name|class|xpath|css) "{element}" and text "{text}"

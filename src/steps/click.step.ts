@@ -14,6 +14,16 @@ When(/^I click on element having (id|name|class|xpath|css) "([^"]*)"$/, async (t
 
 });
 
+When(/^I click on all elements having (id|name|class|xpath|css) "([^"]*)"$/, async (type, element) => {
+
+    var webElement = ElementUtil.getElementsFinder(type, element);
+
+    await webElement.each((el) => {
+        el.click();
+    })
+
+});
+
 When(/^I click on link having text "([^"]*)"$/, async (text) => {
 
     var webElement = ElementUtil.findElement("linkText", text);
