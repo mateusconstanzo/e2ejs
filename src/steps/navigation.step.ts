@@ -9,19 +9,25 @@ Then(/^I navigate to "([^"]*)"$/, async (url) => {
 });
 
 Then(/^I navigate back$/, async () => {
-    
+
     await ActionUtil.back();
-    
+
 });
 
 Then(/^I navigate forward$/, async () => {
-    
+
     await ActionUtil.forward();
-    
+
 });
 
 Then(/^I refresh page$/, async () => {
-    
+
     await ActionUtil.refresh();
-    
+
+});
+
+Then(/^I switch to tab "([^"]*)"$/, async (tab) => {
+
+    await ActionUtil.switchToWindow(tab)
+
 });

@@ -38,4 +38,9 @@ export class ActionUtil {
         await browser.actions().sendKeys(protractor.Key.ENTER).perform();
     }
 
+    static async switchToWindow(tab: number) {
+        let handles = await browser.getAllWindowHandles()
+        await browser.switchTo().window(handles[tab-1])
+    }
+
 }
