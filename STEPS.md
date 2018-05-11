@@ -52,3 +52,7 @@ List of all predefined steps
 
 * When I enter "{value}" into input field having (id|name|class|xpath|css) "{element}"
 * When I clear input field having (id|name|class|xpath|css) "{element}"
+
+## Waiting Steps
+* Then I wait element having (id|name|class|xpath|css) "{element}" should be present
+* Then I wait element having (id|name|class|xpath|css) "{element}" should not be present
