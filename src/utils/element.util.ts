@@ -2,9 +2,10 @@ import {
     browser,
     by,
     element,
-    WebElementPromise,
+    WebElement,
     ElementFinder,
     ElementArrayFinder,
+    $
 } from "protractor";
 
 import {
@@ -13,27 +14,35 @@ import {
 
 export class ElementUtil {
 
-    static findElement(type: string, selector: string): WebElementPromise {
+    static findElement(type: string, selector: string): WebElement {
 
-        let by = this.getBy(type, selector);
+        if (type === '$') {
+            return $(selector).getWebElement();
+        }
 
-        return browser.findElement(by);
+        return browser.findElement(
+            this.getBy(type, selector)
+        );
 
     };
 
     static getElementsFinder(type: string, selector: string): ElementArrayFinder {
 
-        let by = this.getBy(type, selector);
-
-        return element.all(by);
+        return element.all(
+            this.getBy(type, selector)
+        );
 
     };
 
     static getElementFinder(type: string, selector: string): ElementFinder {
 
-        let by = this.getBy(type, selector);
+        if (type === '$') {
+            return $(selector);
+        }
 
-        return element(by);
+        return element(
+            this.getBy(type, selector)
+        );
 
     };
 
@@ -63,7 +72,7 @@ export class ElementUtil {
                 return by.css(selector);
 
         }
-        
+
     }
 
 }

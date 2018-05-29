@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+
+    <input type="text" id="field-present" value="Elisa Doria">
+
+    <input type="text" id="field-not-present" value="XPTO" style="visibility: hidden">
+
+
+</body>
+
+<script type="text/javascript">
+
+    setTimeout(function () {
+        document.getElementById("field-present").style.visibility = "hidden";
+    }, 3000);
+
+    setTimeout(function () {
+        document.getElementById("field-not-present").style.visibility = "visible";
+    }, 3000);
+
+</script>
+
+</html>

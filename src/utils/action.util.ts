@@ -1,4 +1,4 @@
-import { browser, by, protractor, WebElementPromise } from "protractor";
+import { browser, protractor, WebElement } from "protractor";
 
 export class ActionUtil {
 
@@ -18,19 +18,19 @@ export class ActionUtil {
         await browser.navigate().refresh();
     };
 
-    static async click(webElement: WebElementPromise) {
+    static async click(webElement: WebElement) {
         await webElement.click();
     };
 
-    static async doubleClick(webElement: WebElementPromise) {
+    static async doubleClick(webElement: WebElement) {
         await browser.actions().doubleClick(webElement).perform();
     }
 
-    static async sendKeys(webElement: WebElementPromise, text: string) {
+    static async sendKeys(webElement: WebElement, text: string) {
         await webElement.sendKeys(text);
     }
 
-    static async clear(webElement: WebElementPromise) {
+    static async clear(webElement: WebElement) {
         await webElement.clear();
     }
 
@@ -39,8 +39,16 @@ export class ActionUtil {
     }
 
     static async switchToWindow(tab: number) {
-        let handles = await browser.getAllWindowHandles()
-        await browser.switchTo().window(handles[tab-1])
+        const handles = await browser.getAllWindowHandles()
+        await browser.switchTo().window(handles[tab - 1])
+    }
+
+    static async close() {
+        await browser.close();
+    }
+
+    static async sleep(seconds: number) {
+        await browser.sleep(seconds * 1000);
     }
 
 }

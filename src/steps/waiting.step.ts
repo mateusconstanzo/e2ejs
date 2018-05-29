@@ -1,18 +1,29 @@
-import { browser, protractor } from 'protractor';
 import { Then } from 'cucumber';
 
 import {
-    ElementUtil
+    ElementUtil,
+    AssertionUtil,
+    ActionUtil
 } from '../utils';
 
-Then(/^I wait element having (id|name|class|xpath|css) "([^"]*)" should be present$/, async (type: string, selector: string) => {
+Then(/^I wait element having (id|name|class|xpath|css|\$) "([^"]*)" should be present$/, async (type: string, element: string) => {
 
-    await browser.wait(protractor.ExpectedConditions.visibilityOf(ElementUtil.getElementFinder(type, selector)), 9000);
+    const webElement = ElementUtil.getElementFinder(type, element);
+
+    await AssertionUtil.visibilityOf(webElement, 9000);
 
 });
 
-Then(/^I wait element having (id|name|class|xpath|css) "([^"]*)" should not be present$/, async (type: string, selector: string) => {
+Then(/^I wait element having (id|name|class|xpath|css|\$) "([^"]*)" should not be present$/, async (type: string, element: string) => {
 
-    await browser.wait(protractor.ExpectedConditions.visibilityOf(ElementUtil.getElementFinder(type, selector)), 9000);
+    const webElement = ElementUtil.getElementFinder(type, element);
+
+    await AssertionUtil.invisibilityOf(webElement, 9000);
+
+});
+
+Then(/^I wait "([^"]*)" seconds$/, async (seconds) => {
+
+    await ActionUtil.sleep(seconds);
 
 });

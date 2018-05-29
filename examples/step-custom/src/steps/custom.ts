@@ -18,4 +18,6 @@ Then(/^I enter e2ejs in search$/, async () => {
 
     await ActionUtil.sendKeys(webElement, "e2ejs");
 
+    await ActionUtil.sleep(1);
+
 });

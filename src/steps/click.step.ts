@@ -6,17 +6,17 @@ import {
     AssertionUtil
 } from '../utils'
 
-When(/^I click on element having (id|name|class|xpath|css) "([^"]*)"$/, async (type, element) => {
+When(/^I click on element having (id|name|class|xpath|css|\$) "([^"]*)"$/, async (type, element) => {
 
-    var webElement = ElementUtil.findElement(type, element);
+    const webElement = ElementUtil.findElement(type, element);
 
     await ActionUtil.click(webElement);
 
 });
 
-When(/^I click on all elements having (id|name|class|xpath|css) "([^"]*)"$/, async (type, element) => {
+When(/^I click on all elements having (id|name|class|xpath|css|\$) "([^"]*)"$/, async (type, element) => {
 
-    var webElement = ElementUtil.getElementsFinder(type, element);
+    const webElement = ElementUtil.getElementsFinder(type, element);
 
     await webElement.each((el) => {
         el.click();
@@ -26,23 +26,31 @@ When(/^I click on all elements having (id|name|class|xpath|css) "([^"]*)"$/, asy
 
 When(/^I click on link having text "([^"]*)"$/, async (text) => {
 
-    var webElement = ElementUtil.findElement("linkText", text);
+    const webElement = ElementUtil.findElement("linkText", text);
 
     await ActionUtil.click(webElement);
 
 });
 
-When(/^I double click on element having (id|name|class|xpath|css) "([^"]*)"$/, async (type, element) => {
+When(/^I click on link having partial text "([^"]*)"$/, async (text) => {
 
-    var webElement = ElementUtil.findElement(type, element);
+    const webElement = ElementUtil.findElement("partialLinkText", text);
+
+    await ActionUtil.click(webElement);
+
+});
+
+When(/^I double click on element having (id|name|class|xpath|css|\$) "([^"]*)"$/, async (type, element) => {
+
+    const webElement = ElementUtil.findElement(type, element);
 
     await ActionUtil.doubleClick(webElement);
 
 });
 
-When(/^I click on element having (id|name|class|xpath|css) "([^"]*)" and text "([^"]*)"$/, async (type, element, text) => {
+When(/^I click on element having (id|name|class|xpath|css|\$) "([^"]*)" and text "([^"]*)"$/, async (type, element, text) => {
 
-    var webElement = ElementUtil.findElement(type, element);
+    const webElement = ElementUtil.findElement(type, element);
 
     await AssertionUtil.equal(webElement.getText(), text);
 

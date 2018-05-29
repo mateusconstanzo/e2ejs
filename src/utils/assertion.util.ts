@@ -28,11 +28,6 @@ export class AssertionUtil {
         await expect(await actual).to.not.contains(expected);
     };
 
-    static async presenceOf(element: ElementFinder, number = 5000) {
-        let EC = protractor.ExpectedConditions;
-        await browser.wait(EC.presenceOf(element), number);
-    };
-
     static async isTrue(value: any) {
         await expect(await value).to.be.true
     };
@@ -44,4 +39,20 @@ export class AssertionUtil {
     static async equalLength(value: any, size: number) {
         await expect(value).to.equal(size);
     };
+
+    static async presenceOf(element: ElementFinder, number = 5000) {
+        const EC = protractor.ExpectedConditions;
+        await browser.wait(EC.presenceOf(element), number);
+    };
+    
+    static async visibilityOf(element: ElementFinder, number = 5000) {
+        const EC = protractor.ExpectedConditions;
+        await browser.wait(EC.visibilityOf(element), number);
+    };
+
+    static async invisibilityOf(element: ElementFinder, number = 5000) {
+        const EC = protractor.ExpectedConditions;
+        await browser.wait(EC.invisibilityOf(element), number);
+    };    
+
 }

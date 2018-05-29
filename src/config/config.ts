@@ -1,4 +1,3 @@
-import * as path from "path";
 import * as dotenv from 'dotenv';
 import { browser, Config } from "protractor";
 import { argv } from 'yargs'
@@ -69,9 +68,9 @@ export const config: Config = {
     }],
 
 
-    onPrepare: () => {
+    onPrepare: async () => {
         browser.ignoreSynchronization = true;
-        browser.manage().window().maximize();
+        await browser.manage().window().maximize();
     },
 
 
@@ -82,10 +81,6 @@ export const config: Config = {
         removeSync('./reports');
     },
 
-
-    onComplete: () => {
-
-    },
 };
 
 function getFeatureFiles() {

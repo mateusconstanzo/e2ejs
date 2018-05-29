@@ -3,9 +3,9 @@ Feature: Assertion Steps
 Scenario: Assertion e2ejs
     Then I navigate to "http://localhost:8080/assertion.html"
     Then element having id "btn-save" should have text as "Save"
-    Then element having id "btn-save" should not have text as "Update"
+    Then element having $ "#btn-save" should not have text as "Update"
     Then element having id "btn-save" should have partial text as "ve"
-    Then element having id "btn-save" should not have partial text as "te"
+    Then element having $ ".btn" should not have partial text as "te"
     Then element having name "btn-action" should have attribute "type" with value "submit"
     Then element having name "btn-action" should have attribute "type" with partial value "mit"
     Then element having name "btn-action" should not have attribute "type" with value "reset"

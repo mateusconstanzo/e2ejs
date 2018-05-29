@@ -1,22 +1,21 @@
 import {
-    browser,
-    by,
-    element,
     ElementArrayFinder,
     WebElement
 } from "protractor";
 
+export class RadioError extends Error {
+
+}
+
 export class RadioUtil {
 
-    static async getFirstSelected(webElements: ElementArrayFinder) {
+    static async getFirstSelected(webElements: ElementArrayFinder): Promise<WebElement> {
 
         await this.valid(webElements);
 
-        let elements = await webElements.getWebElements();
+        const elements = await webElements.getWebElements();
 
-        for (let element of elements) {
-
-            console.log(await element.getText());
+        for (const element of elements) {
 
             if (await element.isSelected()) {
                 return element;
@@ -30,21 +29,17 @@ export class RadioUtil {
 
     static async valid(webElements: ElementArrayFinder) {
 
-        let elements = await webElements.getWebElements();
+        const elements = await webElements.getWebElements();
 
-        for (let element of elements) {
+        for (const element of elements) {
 
-            let type = await element.getAttribute("type");
+            const type = await element.getAttribute("type");
 
-            if (null == type || "radio" !== type) {
+            if (null === type || "radio" !== type) {
                 throw new RadioError('No radio');
             }
         }
 
     };
-
-}
-
-export class RadioError extends Error {
 
 }

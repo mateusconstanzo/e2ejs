@@ -1,20 +1,21 @@
 import {
-    browser,
     by,
-    element,
-    WebElementPromise,
     WebElement
 } from "protractor";
 
+export class SelectError extends Error {
+
+}
+
 export class SelectUtil {
 
-    static async getFirstSelectedOption(webElement: WebElementPromise) {
+    static async getFirstSelectedOption(webElement: WebElement): Promise<WebElement> {
 
         await this.valid(webElement);
 
-        let options = await webElement.findElements(by.tagName("option"));
+        const options = await webElement.findElements(by.tagName("option"));
 
-        for (let option of options) {
+        for (const option of options) {
 
             if (await option.isSelected()) {
                 return option;
@@ -26,18 +27,63 @@ export class SelectUtil {
 
     }
 
-    static async valid(webElement: WebElementPromise) {
+    static async valid(webElement: WebElement) {
 
-        let tagName = await webElement.getTagName();
+        const tagName = await webElement.getTagName();
 
-        if (null == tagName || "select" !== tagName) {
+        if (null === tagName || "select" !== tagName) {
             throw new SelectError('No select');
         }
 
     };
 
-}
+    static async selectOptionByText(webElement: WebElement, option: string) {
 
-export class SelectError extends Error {
+        await this.valid(webElement);
+
+        const options = await webElement.findElements(by.tagName("option"));
+
+        for (const opt of options) {
+
+            const optValue = await opt.getText();
+
+            if (optValue === option) {
+
+                await opt.click();
+
+                return;
+
+            }
+
+        }
+
+        throw new SelectError('Select without the informed value');
+
+    }    
+
+    static async selectOptionByValue(webElement: WebElement, option: string) {
+
+        await this.valid(webElement);
+
+        const options = await webElement.findElements(by.tagName("option"));
+
+        for (const opt of options) {
+
+            const optValue = await opt.getAttribute("value");
+
+            if (optValue === option) {
+
+                await opt.click();
+
+                return;
+
+            }
+
+        }
+
+        throw new SelectError('Select without the informed value');
+
+    }
+
 
 }
